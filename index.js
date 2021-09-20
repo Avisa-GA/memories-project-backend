@@ -24,16 +24,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(cors());
 
 routes(app);
-// app.post("/posts", async (req, res) => {
-//   console.log(req.body);
-//   let newPost = new PostMessage(req.body);
-//   try {
-//     await newPost.save();
-//     res.status(201).json(newPost);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
+
 app.get("/", (req, res) => {
   res.send("Welcome to Memories App 👩🏻‍💻");
 });
