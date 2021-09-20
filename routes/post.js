@@ -1,7 +1,6 @@
-import { rootRoute, createPost, getPosts } from "../controllers/controllers";
+import { createPost, getPosts } from "../controllers/controllers.js";
 
 const routes = (app) => {
-  app.route("/").get(rootRoute);
   app.route("/posts").get(getPosts).post(createPost);
 };
 

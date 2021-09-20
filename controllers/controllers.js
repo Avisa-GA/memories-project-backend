@@ -1,8 +1,4 @@
-import PostMessage from "../models/postMessages";
-
-export const rootRoute = (req, res) => {
-  res.send("Welcome to Memories App 👩🏻‍💻");
-};
+import PostMessage from "../models/postMessages.js";
 
 export const getPosts = async (req, res) => {
   try {
@@ -12,13 +8,13 @@ export const getPosts = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-export const createPost = (req, res) => {
-  const post = req.boby;
-  const newPost = new PostMessage(post);
+
+export const createPost = async (req, res) => {
+  let newPost = new PostMessage(req.body);
   try {
-    newPost.save();
+    await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {
-    res.status(408).json({ message: error.message });
+    console.log(error.message);
   }
 };
